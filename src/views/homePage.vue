@@ -1,34 +1,16 @@
 <script setup lang="ts">
-import { usePostsQuery } from '@/services/queries'
+import PostContent from './postContent.vue';
 
-const { data: posts, isLoading } = usePostsQuery()
-</script>
+
+
+// import child component here
+</script> 
 
 <template>
-  <main class="min-h-screen px-4 py-6 md:p-6">
-    <div v-if="isLoading">Loading posts...</div>
-
-    <div v-else class="grid gap-6">
-      <!-- Loop through the posts array -->
-
-      <article
-        v-for="post in posts"
-        :key="post.id"
-        class="p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
-      >
-        <h2 class="text-xl font-bold">{{ post.title }}</h2>
-
-        <p class="text-slate-600 line-clamp-2 mt-2">{{ post.excerpt || 'No Excerpt Available' }}</p>
-
-        <!-- The dynamic link using the ID or Slug -->
-
-        <RouterLink
-          :to="{ name: 'details', params: { id: post.id } }"
-          class="text-blue-600 hover:underline mt-4 inline-block font-medium"
-        >
-          Read More →
-        </RouterLink>
-      </article>
-    </div>
+  <main class="min-h-screen py-6 md:p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Post Dashboard</h1>
+    <main>
+      <PostContent />
+    </main>
   </main>
 </template>
